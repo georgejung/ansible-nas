@@ -13,6 +13,13 @@
     dest: "{{ traefik_data_directory }}/traefik.toml"
   register: template_config
 
+- name: Template Traefik Dynamic config.toml
+  template:
+    src: dynamic_conf.toml
+    dest: "{{ traefik_data_directory }}/dynamic_conf.toml"
+  register: template_dynamic_conf
+
+
 - name: Traefik Docker Container
   docker_container:
     name: traefik
